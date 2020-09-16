@@ -5,6 +5,8 @@ from django.shortcuts import render
 from django.http import HttpResponseRedirect
 from django.template.context_processors import csrf
 from django.contrib import auth
+from django.contrib.auth.decorators import login_required
+from django.contrib.auth.models import User
 
 
 def user_login(request):
@@ -27,3 +29,12 @@ def auth_view(request):
     else:
         msg = "Wrong Username or Password ....Please Try again."
         return render(request, 'login.html', {'msg': msg})
+
+
+@login_required(login_url='/')
+def profile(request):
+    context = {}
+    users = User.objects.all()
+    context['users'] = users
+    context.update(csrf(request))
+    return render(request, 'profile.html', context=context)
