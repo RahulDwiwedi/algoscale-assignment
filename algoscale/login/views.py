@@ -38,3 +38,18 @@ def profile(request):
     context['users'] = users
     context.update(csrf(request))
     return render(request, 'profile.html', context=context)
+
+
+def delete_user(request):
+    try:
+        user_id = request.POST.get('user_id', "")
+        user_obj = User.objects.get(id=user_id)
+        user_obj.delete()
+        msg = "Successfully deleted user with ID {0}".format(user_id)
+    except:
+        if user_id == "":
+            msg = "Blank user ID".format(user_id)
+        else:
+            msg = "Unable to delete user with ID {0}".format(user_id)
+
+    return render(request, 'profile.html', {'msg': msg})

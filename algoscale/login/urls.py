@@ -7,5 +7,6 @@ urlpatterns = [
     path(r'login', user_login),
     path(r'auth', auth_view),
     path(r'profile', profile),
+    path(r'delete/user', delete_user),
 
 ]
