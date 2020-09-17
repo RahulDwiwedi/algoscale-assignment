@@ -18,7 +18,7 @@ This is a simple Django project with the implimentation of login-registration. B
 2. Create and activate virtualenv for the project. (if want)
 ```bash
 $ virtualenv venv -p python3 
-$ souce venv/bin/activate
+$ source venv/bin/activate
 $ pip install -r requirements.txt
 ```
 3. Navigate to algoscale directory and run the application.
